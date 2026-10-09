@@ -24,6 +24,12 @@ The scripts make no network calls to Jamf Pro beyond the standard local `jamf re
 5. Set parameter 4 to `add` for the request policy and `remove` for the return policy. Parameter 6 optionally enables a dry run (`true` or `false`).
 6. Scope the device-assigned Mac App Store app only to the matching Smart Group and select **Install Automatically**. Scope the Self Service policies only to the intended users and computers.
 
+### Configuration reference
+
+The Self Service policy’s parameter 5 and the Extension Attribute’s `APP_KEY` must match exactly.
+
+![Jamf Pro policy parameter and matching Extension Attribute app key](images/jamf-policy-extension-attribute-app-key.png)
+
 For an add policy, parameter 7 may specify the expected application bundle path (for example, `/Applications/Logic Pro.app`). This enables user notifications while Jamf processes the request. Parameter 8 sets the monitoring limit in seconds (default: `1800`, maximum: `3600`), and parameter 9 enables root-only diagnostic logging when set to `true`.
 
 The add policy creates `/Library/Management/mac_app_group_membership/<app_key>_license.request`; the remove policy deletes it. Each policy runs a recon so the Extension Attribute and Smart Group membership are updated.
